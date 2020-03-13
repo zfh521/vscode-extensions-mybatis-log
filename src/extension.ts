@@ -36,24 +36,32 @@ export function activate(context: vscode.ExtensionContext) {
 			word = word.substring(parametersWordIndex + PARAMETERS_KEY_WORD.length);
 			let parametersWordEndIndex = word.indexOf(NEW_LINE_WORD);
 			// 
-			let parameterString = word.substring(0, parametersWordEndIndex);
-			let parameterArray = parameterString.split(', ');
-			let parameterReplaceIndex = 0;
-			while (queryString.indexOf("?") > -1) {
-				// 防止参数过多, 死循环
-				if (parameterReplaceIndex > 1000) {
-					break;
-				}
-				let parameter = parameterArray[parameterReplaceIndex];
-				let stringIndex = parameter.indexOf("(String)");
-				let timestampIndex = parameter.indexOf("(Timestamp)");
-				parameter = parameter.substring(0, parameter.indexOf("("));
-				if (stringIndex > -1 || timestampIndex > -1) {
-					parameter = `"${parameter}"`;
-				}
-				queryString = queryString.replace("?", parameter);
-				parameterReplaceIndex++;
+			let parameterString = word;
+			if (parametersWordEndIndex > -1) {
+				parameterString = word.substring(0, parametersWordEndIndex);
 			}
+
+			let parameterArray = parameterString.split(', ');
+
+			if (parameterArray.length > 0) {
+				let parameterReplaceIndex = 0;
+				while (queryString.indexOf("?") > -1) {
+					// 防止参数过多, 死循环
+					if (parameterReplaceIndex > 1000) {
+						break;
+					}
+					let parameter = parameterArray[parameterReplaceIndex];
+					let stringIndex = parameter.indexOf("(String)");
+					let timestampIndex = parameter.indexOf("(Timestamp)");
+					parameter = parameter.substring(0, parameter.indexOf("("));
+					if (stringIndex > -1 || timestampIndex > -1) {
+						parameter = `"${parameter}"`;
+					}
+					queryString = queryString.replace("?", parameter);
+					parameterReplaceIndex++;
+				}
+			}
+			
 			vscode.window.showInformationMessage(queryString);
 		}
 	});

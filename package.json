@@ -2,9 +2,9 @@
     "name": "mybatis-log",
     "displayName": "mybatis-log",
     "description": "MyBatis Log Transform SQL",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "carljia",
-    "repository": "",
+    "repository": "https://github.com/CarlJia/vscode-extensions-mybatis-log",
     "engines": {
         "vscode": "^1.32.0"
     },

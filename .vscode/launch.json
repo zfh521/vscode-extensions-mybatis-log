@@ -6,13 +6,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "CodeLens (Launch) - test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "document-editing-sample_45eddab5"
-        },
-        {
             "name": "Extension",
             "type": "extensionHost",
             "request": "launch",
