@@ -1,0 +1,39 @@
+{
+    "name": "mybatis-log",
+    "displayName": "mybatis-log",
+    "description": "MyBatis Log Transform SQL",
+    "version": "0.0.1",
+    "publisher": "carljia",
+    "repository": "",
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.myBatisLog2SQL"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.myBatisLog2SQL",
+                "title": "MyBatisLog2SQL",
+                "category": "MyBatis Log"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "lint": "tslint ./src/*.ts",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^6.0.40",
+        "tslint": "^5.16.0",
+        "typescript": "^3.5.1",
+        "@types/vscode": "^1.32.0"
+    }
+}
