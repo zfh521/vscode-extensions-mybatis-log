@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
 					let timestampIndex = parameter.indexOf("(Timestamp)");
 					parameter = parameter.substring(0, parameter.indexOf("("));
 					if (stringIndex > -1 || timestampIndex > -1) {
-						parameter = `"${parameter}"`;
+						parameter = `'${parameter}'`;
 					}
 					queryString = queryString.replace("?", parameter);
 					parameterReplaceIndex++;
